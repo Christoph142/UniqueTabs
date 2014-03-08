@@ -16,7 +16,7 @@ if(chrome.notifications)
 	});
 
 	chrome.runtime.onSuspend.addListener(function(){
-		chrome.notifications.clear( "UniqueTabs" );
+		chrome.notifications.clear( "UniqueTabs", function (success){/*mandatory callback*/} );
 	});
 }
 
@@ -56,8 +56,8 @@ function handleDuplicate(tab, duplicates)
 		{
 			type : "basic",
 			iconUrl : "icon48.png",
-			title : "Duplicate " + (duplicates.length === 1 ? "tab" : "tabs") + " found for " + abbreviatedUrl(tab),
-			message : "The duplicate tab just got closed and the original one got reactivated for you.\n\n(Press Ctrl+Shift+T or click this notification to reopen it)",
+			title : chrome.i18n.getMessage("notification_title", [ abbreviatedUrl(tab) ]),
+			message : chrome.i18n.getMessage("notification_body"),
 			isClickable : true
 		},
 		function (id){ /* creation callback */ }
