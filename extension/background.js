@@ -1,52 +1,65 @@
-function abbreviatedUrl(tab) {
-  return tab.url.length > 30 ? tab.url.match(/^.{15}|.{15}$/g).join(" [...] ") : tab.url;
+var lastClosedURL = null;
+
+chrome.tabs.onUpdated.addListener( findDuplicates );
+
+if(chrome.notifications)
+{
+	chrome.notifications.onClicked.addListener( function (id){
+		if(id !== "UniqueTabs") return;
+
+		/*if(chrome.sessions)	chrome.sessions.restore( sessionId );
+		else 				*/
+		chrome.tabs.create( { url : lastClosedURL } );
+		console.log("user reopened duplicate of ", lastClosedURL);
+
+		chrome.notifications.clear( id, function (success){/*mandatory callback*/} );
+	});
+
+	chrome.runtime.onSuspend.addListener(function(){
+		chrome.notifications.clear( "UniqueTabs" );
+	});
 }
 
-function findDuplicates(tabId, change, tab) {
-  if (!tab.url || tab.url === "") return;
-  
-  chrome.tabs.getAllInWindow(tab.windowId, function(tabs) {
-    var duplicates = tabs.filter(function(t) {
-      return t.url === tab.url && t.id !== tabId;
-    });
-    if (duplicates.length) handleDuplicate(tab, duplicates);
-  });
+
+function abbreviatedUrl(tab)
+{
+	return tab.url.length > 40 ? tab.url.match(/^.{20}|.{20}$/g).join(" [...] ") : tab.url;
+}
+
+function findDuplicates(tabId, change, tab)
+{
+	if (!tab.url || tab.url === "" || tab.url === lastClosedURL) return;
+
+	chrome.tabs.getAllInWindow(tab.windowId, function(tabs) {
+		var duplicates = tabs.filter(function(t) {
+			return t.url === tab.url && t.id !== tabId;
+		});
+		if (duplicates.length) handleDuplicate(tab, duplicates);
+	});
 }
 
 function handleDuplicate(tab, duplicates)
 {
-	chrome.tabs.highlight( { windowId : tab.windowId, tabs : duplicates[0].id } , function(){/* mandatory callback */}); // select original tab
+	console.log("URL: tab:", tab.url, "lastClosed:", lastClosedURL);
+	lastClosedURL = tab.url;
+
+	// select original tab:
+	chrome.tabs.highlight( { windowId : tab.windowId, tabs : duplicates[0].id } , function(){/* mandatory callback */});
 	chrome.tabs.update( duplicates[0].id, { active: true, selected : true, highlighted : true } );
 
+	// remove new duplicate:
+	chrome.tabs.remove( tab.id );
+	console.log("duplicate", tab, "removed");
+
 	if(chrome.notifications) chrome.notifications.create(
-		"UniqueTabs_"+tab.id,
+		"UniqueTabs",
 		{
-			"type" : "basic",
-			"iconUrl" : "icon48.png",
-			"title" : "Duplicate " + (duplicates.length === 1 ? "tab" : "tabs") + " found for " + abbreviatedUrl(tab),
-			"message" : "The original tab just got reactivated for you.\nThe new one will get closed shortly.\n(Click this notification to cancel)",
-			"isClickable" : true
+			type : "basic",
+			iconUrl : "icon48.png",
+			title : "Duplicate " + (duplicates.length === 1 ? "tab" : "tabs") + " found for " + abbreviatedUrl(tab),
+			message : "The duplicate tab just got closed and the original one got reactivated for you.\n\n(Press Ctrl+Shift+T or click this notification to reopen it)",
+			isClickable : true
 		},
-		function (id){ window.setTimeout(function(){ this.close(); }, 5000); }
-	);	
-	else
-	{
-		// remove new duplicate tab:
-		chrome.tabs.remove( tab.id );
-		console.log("UniqueTabs: duplicate removed");
-	}
-}
-
-chrome.tabs.onUpdated.addListener( findDuplicates );
-if(chrome.notifications)
-{
-	chrome.notifications.onClosed.addListener( function (id, byUser){
-		if(id.indexOf("UniqueTabs") === -1) return;
-
-		chrome.tabs.remove( parseInt( id.split("_")[1] ) );
-		console.log("UniqueTabs: duplicate removed");
-	});
-	chrome.notifications.onClicked.addListener( function (id){
-		if(id.indexOf("UniqueTabs") > -1) console.log("UniqueTabs: user canceled duplicate removal");
-	});
+		function (id){ /* creation callback */ }
+	);
 }
