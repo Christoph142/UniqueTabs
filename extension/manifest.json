@@ -1,9 +1,10 @@
 {
   "name"          : "Unique Tabs",
-  "description"   : "Automatically prevents duplicate tabs in the same window upon opening a new tab or navigating to a new page",
-  "developer"     : {"name" : "Christoph D. (based on the extension by Joey Aghion)"},
+  "description"   : "__MSG_description__",
+  "developer"     : {"name" : "Christoph142"},
   "homepage_url"  : "https://christoph142.wordpress.com",
   "version"       : "1.0",
+  "default_locale": "en",
 
   "background": {
     "scripts": ["background.js"],
