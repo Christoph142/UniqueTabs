@@ -1,7 +1,15 @@
 {
-	"description" :			{ "message" : "Verhindert automatisch Duplikate im selben Fenster" },
-	"notification_title" :	{ "message" : "Duplikat von $url$ gefunden",
-							  "placeholders" : { "url" : { "content" : "$1" } }
-							},
-	"notification_body" :	{ "message" : "Das Duplikat wurde soeben für dich geschlossen und das Original wieder geöffnet.\n\n(Drücke Strg+Shift+T oder klicke auf diese Benachrichtigung um es erneut zu öffnen)" }
+    "notification_title": {
+        "message": "Duplikat von $url$ gefunden",
+		"placeholders" : { "url" : { "content" : "$1" } },
+        "description": ""
+    },
+    "notification_body": {
+        "message": "Das Duplikat wurde soeben für dich geschlossen und das Original wieder geöffnet.\n\n(Drücke Strg+Shift+T oder klicke auf diese Benachrichtigung um es erneut zu öffnen)",
+        "description": ""
+    },
+    "description": {
+        "message": "Verhindert automatisch Duplikate im selben Fenster",
+        "description": ""
+    }
 }
