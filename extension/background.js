@@ -30,7 +30,7 @@ function findDuplicates(tabId, change, tab)
 {
 	if (!tab.url || tab.url === "" || tab.url === lastClosedURL) return;
 
-	chrome.tabs.getAllInWindow(tab.windowId, function(tabs) {
+	chrome.tabs.query({}, function(tabs) {
 		var duplicates = tabs.filter(function(t) {
 			return t.url === tab.url && t.id !== tabId;
 		});
@@ -40,11 +40,12 @@ function findDuplicates(tabId, change, tab)
 
 function handleDuplicate(tab, duplicates)
 {
+	if(lastClosedURL === tab.url) return; // prevent multiple execution
+	
 	console.log("URL: tab:", tab.url, "lastClosed:", lastClosedURL);
 	lastClosedURL = tab.url;
 
 	// select original tab:
-	chrome.tabs.highlight( { windowId : tab.windowId, tabs : duplicates[0].id } , function(){/* mandatory callback */});
 	chrome.tabs.update( duplicates[0].id, { active: true, selected : true, highlighted : true } );
 
 	// remove new duplicate:
@@ -55,10 +56,9 @@ function handleDuplicate(tab, duplicates)
 		"UniqueTabs",
 		{
 			type : "basic",
-			iconUrl : "icon48.png",
+			iconUrl : "icon128.png",
 			title : chrome.i18n.getMessage("notification_title", [ abbreviatedUrl(tab) ]),
-			message : chrome.i18n.getMessage("notification_body"),
-			isClickable : true
+			message : chrome.i18n.getMessage("notification_body")
 		},
 		function (id){ /* creation callback */ }
 	);

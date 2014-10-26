@@ -1,0 +1,14 @@
+{
+    "notification_title": {
+        "message": "Duplicaat-tabblad gevonden voor $url$",
+        "description": ""
+    },
+    "notification_body": {
+        "message": "Het gedupliceerde tabblad is zojuist gesloten en het originele tabblad is geheractiveerd.\n\n(Drup op CTRL+SHIFT+T of klik op deze melding om het te heropenen)",
+        "description": ""
+    },
+    "description": {
+        "message": "Voorkomt automatisch dat er duplicaat-tabbladen zijn in een venster",
+        "description": ""
+    }
+}
