@@ -1,14 +1,14 @@
 {
     "notification_title": {
-        "message": "Duplicate tab found for $url$",
+        "message": "Duplicate tab closed",
         "description": ""
     },
     "notification_body": {
-        "message": "The duplicate tab just got closed and the original one got reactivated for you.\n\n(Press Ctrl+Shift+T or click this notification to reopen it)",
+        "message": "Click here or press Ctrl+Shift+T to reopen $url$",
         "description": ""
     },
     "description": {
-        "message": "Automatically prevents duplicate tabs in the same window",
+        "message": "Automatically prevents duplicate tabs",
         "description": ""
     }
 }

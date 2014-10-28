@@ -1,15 +1,14 @@
 {
     "notification_title": {
-        "message": "Se encontró pestaña duplicada de $url$",
-        "placeholders" : { "url" : { "content" : "$1" } },
+        "message": "Duplicate tab closed",
         "description": ""
     },
     "notification_body": {
-        "message": "Se acaba de cerrar la pestaña duplicada y de reactivar la original por ti.\n\n(Pulsa Ctrl+Shift+T o haz clic en esta notificación para reabrirla)",
+        "message": "Click here or press Ctrl+Shift+T to reopen $url$",
         "description": ""
     },
     "description": {
-        "message": "Evitar automáticamente pestañas duplicadas en la misma ventana",
+        "message": "Automatically prevents duplicate tabs",
         "description": ""
     }
 }

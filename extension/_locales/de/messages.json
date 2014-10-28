@@ -1,15 +1,14 @@
 {
     "notification_title": {
-        "message": "Duplikat von $url$ gefunden",
-		"placeholders" : { "url" : { "content" : "$1" } },
+        "message": "Duplicate tab closed",
         "description": ""
     },
     "notification_body": {
-        "message": "Das Duplikat wurde soeben für dich geschlossen und das Original wieder geöffnet.\n\n(Drücke Strg+Shift+T oder klicke auf diese Benachrichtigung um es erneut zu öffnen)",
+        "message": "Click here or press Ctrl+Shift+T to reopen $url$",
         "description": ""
     },
     "description": {
-        "message": "Verhindert automatisch Duplikate im selben Fenster",
+        "message": "Automatically prevents duplicate tabs",
         "description": ""
     }
 }
