@@ -3,5 +3,13 @@
 	"notification_title" :	{ "message" : "Duplicate tab closed" },
 	"notification_body" :	{ "message" : "Click here or press Ctrl+Shift+T to reopen $url$",
 							  "placeholders" : { "url" : { "content" : "$1" } }
-							}
+							},
+	"notify" :				{ "message" : "Display notifications when tab gets closed" },
+	"notify_yes" :			{ "message" : "yes" },
+	"notify_no" :			{ "message" : "no" },
+	"duplicate" :			{ "message" : "When should tabs be treated as duplicates?" },
+	"host" :				{ "message" : "same host" },
+	"page" :				{ "message" : "same page" },
+	"variables" :			{ "message" : "same variables" },
+	"identical" :			{ "message" : "only when exactly identical" }
 }

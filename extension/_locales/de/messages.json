@@ -1,7 +1,46 @@
 {
-	"description" :			{ "message" : "Verhindert automatisch Tab-Duplikate" },
-	"notification_title" :	{ "message" : "Tab-Duplikat geschlossen" },
-	"notification_body" :	{ "message" : "Hier klicken oder Strg+Shift+T drücken um $url$ wieder zu öffnen",
-							  "placeholders" : { "url" : { "content" : "$1" } }
-							}
+    "notification_title": {
+        "message": "Duplicate tab closed",
+        "description": ""
+    },
+    "host": {
+        "message": "same host",
+        "description": ""
+    },
+    "variables": {
+        "message": "same variables",
+        "description": ""
+    },
+    "page": {
+        "message": "same page",
+        "description": ""
+    },
+    "identical": {
+        "message": "only when exactly identical",
+        "description": ""
+    },
+    "notify_yes": {
+        "message": "yes",
+        "description": ""
+    },
+    "duplicate": {
+        "message": "When should tabs be treated as duplicates?",
+        "description": ""
+    },
+    "notify": {
+        "message": "Display notifications when tab gets closed",
+        "description": ""
+    },
+    "notification_body": {
+        "message": "Click here or press Ctrl+Shift+T to reopen $url$",
+        "description": ""
+    },
+    "notify_no": {
+        "message": "no",
+        "description": ""
+    },
+    "description": {
+        "message": "Automatically prevents duplicate tabs",
+        "description": ""
+    }
 }

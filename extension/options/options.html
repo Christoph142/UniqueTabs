@@ -1,0 +1,50 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8">
+    <title>Download Control</title>
+    <link rel="stylesheet" type="text/css" href="options.css">
+    <link rel="stylesheet" type="text/css" href="SexyDialog.css">
+    <link rel="icon" type="image/png" href="../images/icon48.png">
+    <script src="prefs.js"></script>
+    <script src="SexyDialog.js"></script>
+	<script src="scrollbarHandler.js"></script>
+</head>
+
+<body>
+  <div id="wallpaper">
+    <div id="tool-container">
+      <div id="sidebar">
+        <div id="sidebar-icon"></div>
+        <h1>Download Control</h1>
+        <h5 style="margin-top:-5px;"><span class="i18n" data-i18n="by"></span> <a href="https://christoph142.wordpress.com" target="_blank">Christoph D.</a></h5>
+        <menu id="sidebar-menu">
+          <li data-target="0" class="selected i18n menu" data-i18n="settings"></li>
+        </menu>
+      </div> <!-- sidebar -->
+      <div id="content">
+          
+        <div id="content0" class="visible">
+     		<h2 class="section-header i18n" data-i18n="settings"></h2>
+            <div class="setting">
+              <span class="i18n" data-i18n="notify"></span><br><br>
+              <label><input type="radio" name="notify" value="1"><span class="i18n" data-i18n="notify_yes"></span></label><br>
+              <label><input type="radio" name="notify" value="0" checked><span class="i18n" data-i18n="notify_no"></span></label>
+            </div>
+            <div class="setting">
+              <span class="i18n" data-i18n="duplicate"></span><br><br>
+              <label><input type="radio" name="duplicate" value="host"><span class="i18n" data-i18n="host"></span></label><br>
+              <label><input type="radio" name="duplicate" value="page"><span class="i18n" data-i18n="page"></span></label><br>
+              <label><input type="radio" name="duplicate" value="variables" checked><span class="i18n" data-i18n="variables"></span></label><br>
+              <label><input type="radio" name="duplicate" value="identical"><span class="i18n" data-i18n="identical"></span></label>
+            </div>
+          </div>
+      
+        <div id="footer"><a href="https://christoph142.wordpress.com" target="_blank"><span class="i18n" data-i18n="footer"></span> :)</a></div>
+        
+      </div> <!-- content -->
+    </div> <!-- tool-container -->
+  </div> <!-- wallpaper -->
+</body>
+
+</html>
