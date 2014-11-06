@@ -48,8 +48,8 @@ function handleDuplicate(tab, duplicates)
 	
 	lastClosedTab = tab;
 
-	// select original tab:
-	chrome.tabs.update( duplicates[0].id, { active: true, selected : true, highlighted : true } );
+	// select original tab and navigate to / reload page:
+	chrome.tabs.update( duplicates[0].id, { url: tab.url, active: true, selected : true, highlighted : true } );
 
 	// remove new duplicate:
 	chrome.tabs.remove( tab.id );
