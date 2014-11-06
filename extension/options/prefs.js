@@ -16,16 +16,6 @@ chrome.runtime.getBackgroundPage( function (b){
 
 window.addEventListener("change", function(e) // save preferences:
 {
-	if(e.target.id === "url" || e.target.id === "ext" || e.target.id === "dir") return; // saved via "Add"-button
-	
-	if(e.target.id.indexOf("defaultPath") !== -1){
-		if(e.target.id === "defaultPathBrowser")	var p = bg.correct_path_format(e.target.value, "absolute");
-		else 										var p = bg.correct_path_format(e.target.value, "relative");
-
-		if(p !== false) 	e.target.value = p;
-		else{ 				restoreprefs(); return; }
-	}
-	
 	if(e.target.type === "checkbox") bg.save_new_value(e.target.id, e.target.checked ? "1" : "0");
 	else if(e.target.type === "radio" && e.target.name === "notify")
 	{
@@ -59,14 +49,11 @@ function restoreprefs()
 	// get inputs:
 	var inputs = document.getElementsByTagName("input");	
 	for(var i = 0; i < inputs.length; i++){
-		if( !storage[inputs[i].id] && !storage[inputs[i].name] && inputs[i].id.split(".")[0] !== "contextMenu") continue;
+		if( !storage[inputs[i].id] && !storage[inputs[i].name]) continue;
 		
-		if( inputs[i].type === "checkbox" ){
-			if(inputs[i].id.split(".")[0] === "contextMenu") inputs[i].checked = (storage["contextMenu"][ inputs[i].id.split(".")[1] ] === "1" ? true : false);
-			else 											 inputs[i].checked = (storage[inputs[i].id] === "0" ? false : true);
-		}
-		else if ( inputs[i].type === "radio" ){	if( inputs[i].value === storage[inputs[i].name] ) inputs[i].checked = true; }
-		else									inputs[i].value = storage[inputs[i].id];
+		if 		( inputs[i].type === "checkbox" ) 	inputs[i].checked = (storage[inputs[i].id] === "0" ? false : true);
+		else if ( inputs[i].type === "radio" ){		if( inputs[i].value === storage[inputs[i].name] ) inputs[i].checked = true; }
+		else										inputs[i].value = storage[inputs[i].id];
 	}
 }
 

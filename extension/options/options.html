@@ -2,10 +2,10 @@
 <html>
 <head>
 	<meta charset="UTF-8">
-    <title>Download Control</title>
+    <title>Unique Tabs</title>
     <link rel="stylesheet" type="text/css" href="options.css">
     <link rel="stylesheet" type="text/css" href="SexyDialog.css">
-    <link rel="icon" type="image/png" href="../images/icon48.png">
+    <link rel="icon" type="image/png" href="../icon48.png">
     <script src="prefs.js"></script>
     <script src="SexyDialog.js"></script>
 	<script src="scrollbarHandler.js"></script>
@@ -16,7 +16,7 @@
     <div id="tool-container">
       <div id="sidebar">
         <div id="sidebar-icon"></div>
-        <h1>Download Control</h1>
+        <h1>Unique Tabs</h1>
         <h5 style="margin-top:-5px;"><span class="i18n" data-i18n="by"></span> <a href="https://christoph142.wordpress.com" target="_blank">Christoph D.</a></h5>
         <menu id="sidebar-menu">
           <li data-target="0" class="selected i18n menu" data-i18n="settings"></li>
@@ -33,14 +33,12 @@
             </div>
             <div class="setting">
               <span class="i18n" data-i18n="duplicate"></span><br><br>
-              <label><input type="radio" name="duplicate" value="host"><span class="i18n" data-i18n="host"></span></label><br>
-              <label><input type="radio" name="duplicate" value="page"><span class="i18n" data-i18n="page"></span></label><br>
-              <label><input type="radio" name="duplicate" value="variables" checked><span class="i18n" data-i18n="variables"></span></label><br>
-              <label><input type="radio" name="duplicate" value="identical"><span class="i18n" data-i18n="identical"></span></label>
+              <label><input type="radio" name="duplicate" value="host"><span class="i18n" data-i18n="host"></span> (<b>a.b.com</b>/page.html?var=none#anchor)</label><br>
+              <label><input type="radio" name="duplicate" value="page"><span class="i18n" data-i18n="page"></span> (<b>a.b.com/page.html</b>?var=none#anchor)</label><br>
+              <label><input type="radio" name="duplicate" value="variables" checked><span class="i18n" data-i18n="variables"></span> (<b>a.b.com/page.html?var=none</b>#anchor)</label><br>
+              <label><input type="radio" name="duplicate" value="identical"><span class="i18n" data-i18n="identical"> (<b>a.b.com/page.html?var=none#anchor</b>)</span></label>
             </div>
           </div>
-      
-        <div id="footer"><a href="https://christoph142.wordpress.com" target="_blank"><span class="i18n" data-i18n="footer"></span> :)</a></div>
         
       </div> <!-- content -->
     </div> <!-- tool-container -->
